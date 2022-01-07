@@ -7,8 +7,10 @@ public:
         
         for(auto x: nums){
             c[x]++;
-            if(c[x]>len)
-                return x;
+            
+        }
+        for(auto x: c){
+            if(x.second > len)return x.first;
         }
         return 0;
     }
