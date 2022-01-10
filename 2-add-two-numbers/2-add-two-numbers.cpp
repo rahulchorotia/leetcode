@@ -15,9 +15,20 @@ public:
     {
        int num=0;
         ListNode *temp=NULL,*head=NULL;
-        while(l1&&l2)
+        while(l1||l2)
         {
-            int sum=l1->val+l2->val+num;
+            int sum=0;
+            if(l1 !=NULL)
+            {
+                sum+=l1->val;
+                l1=l1->next;
+            }
+            if(l2 !=NULL)
+            {
+                sum+=l2->val;
+                l2=l2->next;
+            }
+            sum+=num;
             if(sum>=10)
             {
                 num=sum/10;
@@ -35,39 +46,8 @@ public:
                 temp=temp->next;
             }
                
-            l1=l1->next;
-            l2=l2->next;
         }
-        while(l1!=NULL)
-        {
-            int sum=l1->val+num;
-            if(sum>=10)
-            {
-                num=sum/10;
-                sum=sum%10;
-            }
-            else
-                num=0;
-             ListNode *newnode= new ListNode(sum);
-             temp->next=newnode;
-             temp=temp->next;
-            l1=l1->next;
-        }
-         while(l2!=NULL)
-        {
-            int sum=l2->val+num;
-            if(sum>=10)
-            {
-                num=sum/10;
-                sum=sum%10;
-            }
-            else
-                num=0;
-             ListNode *newnode= new ListNode(sum);
-             temp->next=newnode;
-             temp=temp->next;
-            l2=l2->next;
-        }
+    
         if(num!=0)
         {
             ListNode *newnode= new ListNode(num);
