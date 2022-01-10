@@ -16,7 +16,7 @@ public:
         while(n1--){
             fast = fast->next;
         }
-        if(!fast){
+        if(fast ==NULL){
             return slow->next;
         }
         while(fast->next){
