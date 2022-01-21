@@ -19,19 +19,20 @@ public:
         if(!root)
             return ans;
         q.push(root);
-        while(!q.empty()){
-            temp.clear();
-           while(!q.empty()){
-               temp.push_back(q.front());
+        while(!q.empty())
+        {
+           
+            int n=q.size();
+           while(n--)
+           {
+               TreeNode *x=q.front();
+               temp1.push_back(x->val);
                q.pop();
-           }
-            for(auto &x:temp){
-                temp1.push_back(x->val);
-                if(x->left != NULL)
+               if(x->left != NULL)
                     q.push(x->left);
                 if(x->right !=NULL)
                     q.push(x->right);
-            }
+           }
             ans.push_back(temp1); 
             temp1.clear();
         }
