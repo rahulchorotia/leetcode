@@ -13,7 +13,7 @@ class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
         if(!p||!q)
-            return p==q?1:0;
+            return p==q;
         if(p->val!=q->val)
             return false;
         else
