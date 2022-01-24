@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    unordered_map<int,int>mp;
+    unordered_set<int>mp;
     bool findTarget(TreeNode* root, int k) {
        if(!root)
            return 0;
@@ -19,7 +19,7 @@ public:
             return true;
         }
      
-            mp.insert({root->val,k});
+            mp.insert({root->val});
             return findTarget(root->left,k)||findTarget(root->right,k);
         
     }
