@@ -18,25 +18,23 @@ public:
         return maxDepth(root)==-1?0:1;
     }
      int maxDepth(TreeNode* root) {
-         if(check==0)
-             return -1;
+        
          if(!root)
             return 0;
         int tlh= maxDepth(root->left);
-        if(tlh==-1)
-            return -1;
-        int lh=1+tlh;
+        if(tlh==-1) return -1;
+        
+         
          int trh=maxDepth(root->right);
-         if(trh==-1)
-             return -1;
-        int rh=1+trh;
-         if(abs(lh-rh)>=2)
+         if(trh==-1) return -1;
+       
+         
+         if(abs(tlh-trh)>=2)
          {
-             check=0;
              return -1;
          }
          else
-         return max(lh,rh);
+         return max(tlh,trh)+1;
 
     }
 };
