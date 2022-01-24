@@ -18,10 +18,9 @@ public:
         if(mp.find(k-root->val)!=mp.end()){
             return true;
         }
-        else
-        {
+     
             mp.insert({root->val,k});
             return findTarget(root->left,k)||findTarget(root->right,k);
-        }
+        
     }
 };
