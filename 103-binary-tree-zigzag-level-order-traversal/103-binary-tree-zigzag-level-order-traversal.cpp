@@ -29,10 +29,9 @@ public:
            {
                TreeNode *x=q.front();
                 int index=0;
-               if(c==0)
-                 index =i;
-               else
-                    index=n-1-i;
+              
+               index=c==0?i:n-1-i;
+               
                temp1[index]=x->val;
                q.pop();
                if(x->left != NULL)
