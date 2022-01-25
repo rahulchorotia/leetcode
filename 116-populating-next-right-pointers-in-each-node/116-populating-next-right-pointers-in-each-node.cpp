@@ -10,8 +10,8 @@ public:
             return;
         if(r->left)
             r->left->next=r->right;
-        if(r->right&&r->next)
-            r->right->next=r->next->left;
+      
+           (r->right)?(r->right->next=(r->next)?r->next->left:NULL):NULL;
         fun(r->left);
         fun(r->right);
     }
