@@ -1,15 +1,13 @@
 
 class Solution {
 public:
-    Node* connect(Node* root) {
-        fun(root);
-        return root;
-    }
-    void fun(Node *r){
-        if(!r)return;
+    Node* connect(Node* r) {
+        if(!r)return NULL;
         r->left?r->left->next=r->right:NULL;
         r->right?r->right->next=(r->next)?r->next->left:NULL:NULL;
-        fun(r->left);
-        fun(r->right);
+        connect(r->left);
+        connect(r->right);
+        return r;
     }
+   
 };
