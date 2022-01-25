@@ -23,17 +23,17 @@ public:
         q.push(r);
         while(!q.empty()){
             int n= q.size();
-            int temp1;
+          TreeNode *temp;
             for(int i=0;i<n;i++){
-                TreeNode *temp=q.front();
+                temp=q.front();
                 q.pop();
-                temp1=temp->val;
+              
                 if(temp->left)
                     q.push(temp->left);
                 if(temp->right)
                     q.push(temp->right);
             }
-            ans.push_back(temp1);
+            ans.push_back(temp->val);
         }
     }
 };
