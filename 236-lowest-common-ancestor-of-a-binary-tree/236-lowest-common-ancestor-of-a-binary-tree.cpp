@@ -11,16 +11,18 @@ class Solution {
 public:
     //bool pp=false,qq=false,done=false; TreeNode* ans;
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root)
+            return NULL;
         if(root==p||root==q)
             return root;
-        bool pp=found(root->left,p,q);
-        bool qq=found(root->right,p,q);
-        if(pp&&qq)
+        TreeNode * lft=lowestCommonAncestor(root->left,p,q);
+        TreeNode * rht=lowestCommonAncestor(root->right,p,q);
+        if(lft&&rht)
             return root;
-        if(pp)
-            return lowestCommonAncestor(root->left,p,q);
+        if(lft)
+            return lft;
         else
-        return lowestCommonAncestor(root->right,p,q);
+            return rht;
     }
     
     bool found(TreeNode* r, TreeNode* p, TreeNode* q){
