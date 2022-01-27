@@ -13,25 +13,31 @@ class Solution {
 public:
     bool done;
     TreeNode* insertIntoBST(TreeNode* root, int val) {
-        if(!root){
-            return new TreeNode(val);
-        }
-        TreeNode* curr = root;
-        while(curr){
-            if(curr->val > val and curr->left)
-                curr= curr->left;
-            else if(curr->val < val and curr->right)
-                curr = curr->right;
-            else
-                break;
-        }
-        TreeNode* t = new TreeNode(val);
-        if(curr->val > val)
-            curr->left = t;
-        else
-            curr->right = t;
-            
+        if(!root)   return new TreeNode(val);
+       fun(root,val);
         return root;
+    }
+    void fun(TreeNode *root,int &val){
+        if(!root)return;
+         if(val<root->val&&!root->left)
+        {
+            root->left=new TreeNode(val);
+            return ;
+        }
+        else if(val>root->val&&!root->right)
+        {
+            root->right=new TreeNode(val);
+            return ;
+        }
+        else if(val>root->val&&root->right)
+        {
+           fun(root->right,val);
+        }
+        else if(val<root->val&&root->left)
+        {
+           fun(root->left,val);
+        }
+        return;
     }
    
 };
