@@ -16,29 +16,22 @@ public:
         if(!root){
             return new TreeNode(val);
         }
-        done = false;
-        fun(root,val);
+        TreeNode* curr = root;
+        while(curr){
+            if(curr->val > val and curr->left)
+                curr= curr->left;
+            else if(curr->val < val and curr->right)
+                curr = curr->right;
+            else
+                break;
+        }
+        TreeNode* t = new TreeNode(val);
+        if(curr->val > val)
+            curr->left = t;
+        else
+            curr->right = t;
+            
         return root;
     }
-    void fun(TreeNode* root, int val){
-        if(!root || done)return ;
-        
-        if(root->val < val)
-            fun(root->right,val);
-        else if(root->val > val)
-            fun(root->left,val);
-        
-        if(!done){
-            TreeNode* neww  = new TreeNode(val);
-            if(root->val < val )
-            {
-                root->right = neww;
-            }
-            else{
-                root->left = neww;
-            }
-            done = true;
-        }
-            
-    }
+   
 };
