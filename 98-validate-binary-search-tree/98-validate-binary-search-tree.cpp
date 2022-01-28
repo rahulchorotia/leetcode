@@ -5,30 +5,24 @@ public:
     {
         if(!root)
             return 1;
-        if(mini && maxi)
-        {
-            if(root->val<=mini->val||root->val>=maxi->val)
-                return 0;
-             
-              return isValidBST(root->left,mini,root)&&isValidBST(root->right,root,maxi);
-        }
-        if(mini&&!maxi)
-        {
-            if(root->val<=mini->val)
-                return 0;
-            else
-                return isValidBST(root->left,mini,root)&&isValidBST(root->right,root,maxi);
-        }
-        if(!mini&&maxi){
-            
-            if(root->val>=maxi->val)
-                return 0;
-            else
-                return isValidBST(root->left,mini,root)&&isValidBST(root->right,root,maxi);
-        }
-        if(!mini && !maxi)
-            return isValidBST(root->left,mini,root)&&isValidBST(root->right,root,maxi);
+        return help(root);
        return 0;
     }
+     bool help(TreeNode* root,TreeNode *mini=NULL,TreeNode * maxi=NULL) {
+        if(!root)   return 1;
+        if(mini&& root->val <= mini->val)
+        {
+           return 0;
+        }
+       if(maxi&& root->val >= maxi->val)
+        {
+           return 0;
+        }
+       
+         return help(root->left,mini,root)&& help(root->right,root,maxi);
+        
+           
+            
+        }
     
 };
