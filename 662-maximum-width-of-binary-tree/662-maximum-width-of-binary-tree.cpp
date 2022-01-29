@@ -8,32 +8,27 @@ public:
        
         dfs(root,0,mp,1);
         ull maxx = 0;
-        for(auto itr = mp.begin() ; itr != mp.end() ; itr++){
-            auto z = itr->second;
-            maxx = maxx > z.second-z.first+1 ? maxx : z.second-z.first+1 ;
-        }
+       for(auto &x:mp){
+           ull temp=x.second.second-x.second.first+1;
+          
+          if(maxx<temp)
+              maxx=temp;
+       }
         return maxx;
         
     }
     
     void dfs(TreeNode* root, ull lvl , map<ull,pair<ull,ull>>& mp,ull h){
         if(!root)return;
-        
+         if(mp.find(h)!=mp.end()){
+            mp[h].first=min(mp[h].first,lvl);
+            mp[h].second=max(mp[h].second,lvl);
+        }
+        else
+            mp[h]=make_pair(lvl,lvl);
         dfs(root->left,lvl*2,mp,h+1);
         dfs(root->right,lvl*2+1,mp,h+1);
-        
-        if(mp.find(h) == mp.end()){
-           mp[h] = make_pair(lvl,lvl);
-        }
-        else{
-            auto x = mp[h];
-           
-            x.second = x.second > lvl ? x.second:lvl; 
-            x.first = x.first < lvl ? x.first:lvl; 
-            mp[h] = x;
-            
-        }
-        
+       
     }
     
     
