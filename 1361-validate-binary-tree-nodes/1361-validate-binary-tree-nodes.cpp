@@ -3,7 +3,7 @@ public:
     bool validateBinaryTreeNodes(int n, vector<int>& l, vector<int>& r) {
         vector<bool>v(n,0);
         queue<int>q;
-        map<int,int>mp;
+        unordered_map<int,int>mp;
         for(int i=0;i<n;i++){
             mp[l[i]]++;
             mp[r[i]]++;
@@ -11,7 +11,10 @@ public:
         int ind=0;
         for(int i=0;i<n;i++){
            if(mp[i]==0)
+           {
                ind=i;
+               break;
+           }
         }
         cout<<ind;
         q.push(ind);
