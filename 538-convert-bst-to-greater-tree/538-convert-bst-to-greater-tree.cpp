@@ -11,19 +11,19 @@
  */
 class Solution {
 public:
-    
+    int sum=0;
     TreeNode* convertBST(TreeNode* root) {
         if(!root)
             return root;
         int x=0;
-        fun(root,x);
+        fun(root);
         return root;
     }
-   void fun(TreeNode * r,int &sum){
+   void fun(TreeNode * r){
         if(!r) return;
-        fun(r->right,sum);
+        fun(r->right);
         sum+=r->val;
         r->val=sum;
-        fun(r->left,sum);
+        fun(r->left);
     }
 };
