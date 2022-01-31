@@ -12,18 +12,13 @@
 class Solution {
 public:
     int sum=0;
-    TreeNode* convertBST(TreeNode* root) {
-        if(!root)
-            return root;
-        int x=0;
-        fun(root);
-        return root;
-    }
-   void fun(TreeNode * r){
-        if(!r) return;
-        fun(r->right);
+    TreeNode* convertBST(TreeNode* r) {
+       if(!r) return NULL;
+        convertBST(r->right);
         sum+=r->val;
         r->val=sum;
-        fun(r->left);
+        convertBST(r->left);
+     return r;
     }
+  
 };
