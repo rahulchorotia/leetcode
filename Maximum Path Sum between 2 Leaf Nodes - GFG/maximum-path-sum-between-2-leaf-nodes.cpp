@@ -92,50 +92,29 @@ struct Node
 
 class Solution {
 public:
-int findMaxSumPath(Node* root, int &max_sum)
-{
-    // base case: empty tree
-    if (root == nullptr) {
-        return 0;
+int fun(Node *r,int& maxi){
+        if(!r)
+            return 10000;
+        int left=fun(r->left,maxi);
+        int  right=fun(r->right,maxi);
+        int value=r->data+left+right;
+        if(r->left&&r->right)
+        maxi=max(maxi,value);
+        int ans;
+        if(left==10000&&right==10000)
+        return r->data;
+        if(left==10000)
+            return right+r->data;
+        if(right==10000)
+            return left+r->data;
+        return max(left,right)+r->data;
     }
- 
-    // find the maximum sum node-to-leaf path starting from the left child
-    int left = findMaxSumPath(root->left, max_sum);
- 
-    // find the maximum sum node-to-leaf path starting from the right child
-    int right = findMaxSumPath(root->right, max_sum);
- 
-    // it is important to return the maximum sum node-to-leaf path starting from the
-    // current node
- 
-    // case 1: left child is null
-    if (root->left == nullptr) {
-        return right + root->data;
-    }
- 
-    // case 2: right child is null
-    if (root->right == nullptr) {
-        return left + root->data;
-    }
- 
-    // find the maximum sum path "through" the current node
-    int cur_sum = left + right + root->data;
- 
-    // update the maximum sum path found so far (Note that maximum sum path
-    // "excluding" the current node in the subtree rooted at the current node
-    // is already updated as we are doing postorder traversal)
- 
-    max_sum = max(cur_sum, max_sum);
- 
-    // case 3: both left and right child exists
-    return max(left, right) + root->data;
-}
     int maxPathSum(Node* root)
     {
          if(!root)
             return 0;
         int maxi=INT_MIN;
-            int x=findMaxSumPath(root,maxi);   
+            int x=fun(root,maxi);   
         return maxi==INT_MIN?x:maxi;
     }
 };
