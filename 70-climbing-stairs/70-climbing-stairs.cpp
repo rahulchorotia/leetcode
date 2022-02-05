@@ -1,12 +1,12 @@
 class Solution {
 public:
-    map<int,int>dp;
+    vector<int>dp;
     int climbStairs(int n) {
-        
+        dp.resize(n+1,0);
         return fun(n);
     }
     int fun(int n){
-         if(dp[n])
+         if(dp[n]!=0)
             return dp[n];
         if(n==0)
             return 0;
