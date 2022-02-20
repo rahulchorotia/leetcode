@@ -11,11 +11,13 @@ public:
         return res;
     }
     void fun(vector<int> &ans,vector<int>&nums,int i){
-       if(i>nums.size())
-           return;
-        st.insert(ans);
+       
+        
         if(i>=nums.size())
-           return;
+        {
+            st.insert(ans);
+            return;
+        }
         ans.push_back(nums[i]);
         fun(ans,nums,i+1);
         ans.pop_back();
