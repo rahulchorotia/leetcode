@@ -5,7 +5,7 @@ public:
     {
         if(i==n)
         {
-            sort(d.begin(),d.end());
+            //sort(d.begin(),d.end());
             if(s[d]==0)
             {
             ans.push_back(d);
@@ -19,6 +19,7 @@ public:
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
       
+        sort(nums.begin(),nums.end());
         int i=0;
         int j=nums.size();
         vector<vector<int>> ans;
