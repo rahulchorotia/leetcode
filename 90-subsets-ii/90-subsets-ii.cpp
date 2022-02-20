@@ -1,15 +1,15 @@
 class Solution {
 public:
-    set<vector<int>> s;
+    map<vector<int>,int> s;
     void hello(int i, vector<int> d, vector<vector<int>> &ans,vector<int>& nums,int n)
     {
         if(i==n)
         {
             sort(d.begin(),d.end());
-            if(s.find(d)==s.end())
+            if(s[d]==0)
             {
             ans.push_back(d);
-                s.insert(d);
+                s[d]=1;
             }
             return ;
         }
