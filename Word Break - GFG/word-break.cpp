@@ -15,9 +15,12 @@ class Solution
 {
 public:
 unordered_map<string,int>mp;
+unordered_map<string,int>dp;
     bool solve(string A){
         if(A.size()==0)
             return 1;
+            if(dp[A])
+                return dp[A];
       bool a=0;string temp="";
       for(int i=0;i<A.length();i++){
           
@@ -26,11 +29,10 @@ unordered_map<string,int>mp;
           if(mp.find(temp)!=mp.end())
           {
              a= a|| solve(A.substr(i+1));
-             if(a)
-             return a;
+             
           }
       }
-      return a;
+      return dp[A]=a;
     }
     int wordBreak(string A, vector<string> &B) {
        for(int i=0;i<B.size();i++){
