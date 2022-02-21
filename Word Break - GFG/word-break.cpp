@@ -25,7 +25,9 @@ unordered_map<string,int>mp;
           temp+=A[i];
           if(mp.find(temp)!=mp.end())
           {
-              a=a||solve(A.substr(i+1));
+             a= a|| solve(A.substr(i+1));
+             if(a)
+             return a;
           }
       }
       return a;
