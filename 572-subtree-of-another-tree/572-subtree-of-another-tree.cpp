@@ -11,43 +11,27 @@
  */
 class Solution {
 public:
-    vector<int>s;
-    bool f=0;
-    void solve(TreeNode *r){
-        if(!r){
-            s.push_back(-1);
-            return ;
-        }
-            
-       
-        solve(r->left);
-        solve(r->right);
-        s.push_back(r->val);
-    }
+   
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        
-        solve(subRoot);
-        fun(root);
-        return f;
+        if(!root)
+            return 0;
+
+       
+       
+        return  fun(root,subRoot)||isSubtree(root->left,subRoot)||isSubtree(root->right,subRoot);
     }
-    vector<int> fun(TreeNode *r){
-        vector<int>ans;
-        if(!r) {
-            ans.push_back(-1);
-            return ans;
+    bool fun(TreeNode *r,TreeNode *t){
+        if(!r||!t){
+            if(r==NULL&&t==NULL)
+                return 1;
+            else
+                return 0;
         }
-        vector<int> l=fun(r->left);
-        vector<int> ri=fun(r->right);
-        vector<int>tr;
-        tr.insert(tr.end(),l.begin(),l.end());
-        tr.insert(tr.end(),ri.begin(),ri.end());
-        tr.push_back(r->val);
-        if(tr==s)
+        if(r->val == t->val)
         {
-            f=1;
-            return tr;
+            return fun(r->left,t->left)&&fun(r->right,t->right);
         }
-        return tr;
+        return 0;
     }
     
 };
