@@ -21,12 +21,8 @@ public:
         return  fun(root,subRoot)||isSubtree(root->left,subRoot)||isSubtree(root->right,subRoot);
     }
     bool fun(TreeNode *r,TreeNode *t){
-        if(!r||!t){
-            if(r==NULL&&t==NULL)
-                return 1;
-            else
-                return 0;
-        }
+        if(!r||!t) return r==t?1:0;
+        
         if(r->val == t->val)
         {
             return fun(r->left,t->left)&&fun(r->right,t->right);
