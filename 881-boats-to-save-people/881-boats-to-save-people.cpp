@@ -1,25 +1,29 @@
 class Solution {
 public:
-    int solve(vector<int>&p,int lm,int &cnt,int i,int j){
+    int solve(vector<int>&p,int &lm,int &cnt,int &i,int &j){
         if(i>j)
             return cnt;
         if(i==j){
-            return cnt+1;
+            return ++cnt;
         }
         cnt++;
         if(p[i]+p[j]>lm){
-            
-            return solve(p,lm,cnt,i,j-1);
+            j--;
+            return solve(p,lm,cnt,i,j);
         }
         else if(p[i]+p[j]<=lm){
-            return solve(p,lm,cnt,i+1,j-1);
+            i++;
+            j--;
+            return solve(p,lm,cnt,i,j);
         }
         return 0;
     }
     int numRescueBoats(vector<int>& people, int limit) {
         int cnt=0;
         sort(people.begin(),people.end());
-       cnt= solve(people,limit,cnt,0,people.size()-1);
+        int n=people.size()-1;
+        int i=0;
+        solve(people,limit,cnt,i,n);
         return cnt;
     }
 };
