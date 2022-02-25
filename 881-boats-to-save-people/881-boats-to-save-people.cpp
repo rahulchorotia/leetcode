@@ -1,22 +1,25 @@
 class Solution {
 public:
-    int solve(vector<int>&p,int &lm,int &cnt,int &i,int &j){
+   void  solve(vector<int>&p,int &lm,int &cnt,int &i,int &j){
         if(i>j)
-            return cnt;
+            return ;
         if(i==j){
-            return ++cnt;
+                ++cnt;
+            return;
         }
         cnt++;
         if(p[i]+p[j]>lm){
             j--;
-            return solve(p,lm,cnt,i,j);
+                solve(p,lm,cnt,i,j);
+            return; 
         }
         else if(p[i]+p[j]<=lm){
             i++;
             j--;
-            return solve(p,lm,cnt,i,j);
+                solve(p,lm,cnt,i,j);
+            return; 
         }
-        return 0;
+        return ;
     }
     int numRescueBoats(vector<int>& people, int limit) {
         int cnt=0;
