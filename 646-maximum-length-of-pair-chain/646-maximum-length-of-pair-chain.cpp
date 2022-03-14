@@ -1,7 +1,7 @@
 class Solution {
 public:
    static bool campare(vector<int>&a,vector<int>&b){
-        return a[1]<b[1];
+        return a[0]<b[0];
     }
     int findLongestChain(vector<vector<int>>& pairs) {
         int n  = pairs.size();
