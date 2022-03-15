@@ -1,6 +1,6 @@
 class Solution {
 public:
-     int solve(int *arr,int k,int n){
+     int solve(vector<int>& arr,int k,int n){
       if(k==0)
         return 0;
       int index=-1;
@@ -22,10 +22,9 @@ public:
     int jump(vector<int>& nums) 
     {
         int n=nums.size();
-       int arr[n];
-        for(int i=0;i<nums.size();i++)
-            arr[i]=nums[i];
-        return solve(arr,n-1,n);
+       
+        
+        return solve(nums,n-1,n);
         
     }
         
