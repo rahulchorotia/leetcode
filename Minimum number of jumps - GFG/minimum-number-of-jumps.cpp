@@ -51,7 +51,7 @@ class Solution{
                     curr_max = j;
                     w = 0;
                 }
-                w++;
+               w++;
             }
             i = curr_max;
         }
