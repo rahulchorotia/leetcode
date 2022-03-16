@@ -11,7 +11,7 @@ public:
         
             }
         }
-        cout<<s<<" "<<e<<endl;
+     
         if(s==-1)
             sort(nums.begin(),nums.end());
         
