@@ -10,17 +10,16 @@ public:
         string res="";
         for(int i=1;i<l.size();i++){
             if(l[i]!=l[i-1]){
-                string cstr=to_string(mp[l[i-1]]);
                 //string num=to_string(l[i-1]);
-                res=res+cstr+l[i-1];
+                res=res+to_string(mp[l[i-1]])+l[i-1];
                 mp.erase(l[i-1]);
             }
             
             mp[l[i]]++;
             if(i==l.size()-1){
-                string cstr=to_string(mp[l[i]]);
+              
                // string num=to_string(l[i]);
-                res=res+cstr+l[i];
+                res=res+to_string(mp[l[i]])+l[i];
                 mp.erase(l[i]);
             }
            
