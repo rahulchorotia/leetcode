@@ -17,7 +17,7 @@ int main()
 // } Driver Code Ends
 
 int dp[21][21][21];
-int solve(string A, string B, string C, int i, int j, int k){
+int solve(string &A, string &B, string &C, int i, int j, int k){
     
     if(i>=A.size()||j>=B.size()||k>=C.size()){
         return 0;
